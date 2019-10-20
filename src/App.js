@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Home from './containers/Home';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import PMChart from './components/PMChart';
 
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/chart" component={PMChart}/>
+        <Route path="/" component={Home}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

@@ -1,10 +1,9 @@
 import { BASE_URL } from './../config';
 
-export async function fetchPmcList(){
-    var response = await fetch(`${BASE_URL}search?query='malaria' AND PUB_YEAR:['2010'+TO+'2017'] sort_cited:y&format=json&resulttype=lite`);
+export async function fetchPmcList(body){
+    var response = await fetch(`${BASE_URL}search?query=${body.searchQuery} AND PUB_YEAR:[${body.fromYear}+TO+${body.toYear}] sort_cited:y&format=json&resulttype=lite`);
     var body = await response.json();
     let pubYearwithNumbers = {};
-    console.log('body: ', body);
     if(body){
         body.resultList.result.map((pub) => {
             let year = pub.pubYear;

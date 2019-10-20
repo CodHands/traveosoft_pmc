@@ -5,7 +5,9 @@ const Header = props => {
     return (
         <Fragment>
             <nav className="navbar navbar-expand-sm ">
-                <a className="navbar-brand" href="#">{Logo}</a>
+                <a className="navbar-brand" href="#">
+                    <img src={Logo} alt="traveo_logo"/>
+                </a>
             </nav>
         </Fragment>
     )

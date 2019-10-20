@@ -4,13 +4,15 @@ import { fetchPmcList } from './../services/homeService';
 //components
 import Header from './../components/Header';
 import PMCForm from './../components/PMCForm';
+import PMChart from './../components/PMChart';
 
 class home extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            searchQuery: 'sdnkd',
+            searchQuery: '',
+            form: true,
             options: {
                 chart: {
                     type: 'column'
@@ -54,12 +56,8 @@ class home extends Component {
         }
     }
 
-    componentDidMount(){
-        this.fetchData()
-    }
-
-    fetchData = async() => {
-        const data = await fetchPmcList()
+    fetchData = async(body) => {
+        const data = await fetchPmcList(body)
         if(data){
             this.setState({
                 options: {
@@ -75,13 +73,17 @@ class home extends Component {
                 }
             })
         }
+        this.props.history.push('/chart', {data : this.state.options})
     }
 
     render() {
         return (
             <Fragment>
                 <Header />
-                <PMCForm />
+                <div className="app-container pt-5">
+                    <PMCForm fetchData={(body) => this.fetchData(body)}/>
+                    {/* <PMChart options={this.state.options}/> */}
+                </div>
             </Fragment>
         )
     }
