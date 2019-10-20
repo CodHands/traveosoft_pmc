@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://www.ebi.ac.uk/europepmc/webservices/rest/';
