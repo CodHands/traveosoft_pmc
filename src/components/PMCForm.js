@@ -57,7 +57,7 @@ const PMCForm = (props) => {
                     </div>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary form-button">Submit</button>
+            <button type="submit" disabled={searchQuery && fromYear && toYear ? false : true} className="btn btn-primary form-button">Submit</button>
         </form>
     )
 }
